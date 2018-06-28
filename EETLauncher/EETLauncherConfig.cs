@@ -1,3 +1,4 @@
+//Copyright © alienquake@hotmail.com
 namespace EETLauncherWPF {
     public static class EETLauncherConfig {
         public static string AppLogFileName;

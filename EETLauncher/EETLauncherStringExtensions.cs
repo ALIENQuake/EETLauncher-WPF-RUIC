@@ -1,3 +1,4 @@
+//Copyright © alienquake@hotmail.com
 using System;
 
 namespace EETLauncherWPF {

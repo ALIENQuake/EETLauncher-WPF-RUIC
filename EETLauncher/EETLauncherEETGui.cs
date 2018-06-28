@@ -1,3 +1,4 @@
+//Copyright © alienquake@hotmail.com
 namespace EETLauncherWPF
 {
     public class EETLauncherEETGui {

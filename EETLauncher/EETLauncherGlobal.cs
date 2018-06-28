@@ -1,3 +1,4 @@
+//Copyright © alienquake@hotmail.com
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
