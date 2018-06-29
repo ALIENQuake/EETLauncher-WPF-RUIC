@@ -80,7 +80,8 @@ namespace EETLauncherWPF {
             var EETGuiProcess = new Process { StartInfo = SetEETGUI( EETGui.ChangeTo ) };
 
             try {
-                var result = await Task.Run( () => {
+                // because we want to target .NET 4.0, we are using TaskEx.Run from Microsoft.Bcl.Async instead of default Task.Run from .NET Framework 4.5
+                var result = await TaskEx.Run( () => {
                     EETGuiProcess.Start();
                     EETGuiProcess.WaitForExit();
                     return EETGuiProcess;
