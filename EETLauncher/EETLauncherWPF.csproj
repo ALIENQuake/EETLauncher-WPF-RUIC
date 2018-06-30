@@ -73,7 +73,7 @@
     <ApplicationManifest>EETLauncher.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>EETLauncherWPF_TemporaryKey.pfx</ManifestKeyFile>
