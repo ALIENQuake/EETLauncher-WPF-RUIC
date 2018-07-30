@@ -61,7 +61,7 @@ namespace EETLauncherWPF {
                 case "SoD":
                     return "BG2";
                 default:
-                    //Cannot evaluate aviable GUI change list from:
+                    //Cannot evaluate aviable GUI change list from: //
                     return EETGUIUnknown + Current;
             }
         }
