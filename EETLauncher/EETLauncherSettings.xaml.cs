@@ -45,15 +45,6 @@ namespace EETLauncherWPF {
             try { DragMove(); } catch {}
         }
 
-        public static bool GetProcesExitState( Process Process ) {
-            try {
-                return Process.ExitCode == 0;
-            } catch ( Exception ex ) {
-                File.AppendAllText( Environment.SpecialFolder.ApplicationData + Path.DirectorySeparatorChar + AppLogFileName, Convert.ToString( ex.Message ) + Environment.NewLine );
-                return false;
-            }
-        }
-
         private void OpenEETLua_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
             e.CanExecute = true;
         }
@@ -62,7 +53,7 @@ namespace EETLauncherWPF {
             if ( TestEETBaldurLua() ) {
                 Process.Start( EETBaldurLua );
             } else {
-                EETLauncherSettings_TB_Log.IsEnabled = true;
+                EETLauncherSettings_TB_Log.Visibility = Visibility.Visible;
                 EETLauncherSettings_TB_Log.Text = EETRequireFirstRun;
             }
         }
@@ -83,23 +74,29 @@ namespace EETLauncherWPF {
                 // because we want to target .NET 4.0, we are using TaskEx.Run from Microsoft.Bcl.Async instead of default Task.Run from .NET Framework 4.5
                 var result = await TaskEx.Run( () => {
                     EETGuiProcess.Start();
-                    EETGuiProcess.WaitForExit();
+                    if (EETGuiProcess.Id >= 0)
+                    {
+                        EETGuiProcess?.WaitForExit();
+                    }
+                    else
+                    {
+                        EETGuiProcess = null;
+                    }
                     return EETGuiProcess;
                 } );
-                var state = GetProcesExitState( result );
-                if ( state ) {
-                    EETGui.Current = GetEETCurrentGUI();
-                    EETGui.ChangeTo = GetEETChangeToGUI( EETGui.Current );
-                    EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush( Colors.Green );
-                    EETLauncherSettings_L_CurrentGui.Visibility = Visibility.Visible;
-                    EETLauncherSettings_LB_ChangeGui.Visibility = Visibility.Visible;
-                    EETLauncherSettings_LB_Back.Visibility = Visibility.Visible;
-                }
-                if ( state == false ) {
-                    EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush( Colors.Red );
-                }
+                if (result == null) return;
+                EETGui.Current = GetEETCurrentGUI();
+                EETGui.ChangeTo = GetEETChangeToGUI( EETGui.Current );
+                EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush( Colors.Green );
+                EETLauncherSettings_L_CurrentGui.Visibility = Visibility.Visible;
+                EETLauncherSettings_LB_ChangeGui.Visibility = Visibility.Visible;
+                EETLauncherSettings_LB_Back.Visibility = Visibility.Visible;
             } catch ( Exception ex ) {
-                File.AppendAllText( Environment.SpecialFolder.ApplicationData + Path.DirectorySeparatorChar + AppLogFileName, Convert.ToString( ex.Message ) + Environment.NewLine );
+                EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush( Colors.Red );
+                EETLauncherSettings_LB_Back.Visibility = Visibility.Visible;
+                EETLauncherSettings_TB_Log.Visibility = Visibility.Visible;
+                EETLauncherSettings_TB_Log.Text = ex.Message;
+                File.AppendAllText( Environment.SpecialFolder.ApplicationData + Path.DirectorySeparatorChar + AppLogFileName, ex.Message + Environment.NewLine );
             }
         }
 
