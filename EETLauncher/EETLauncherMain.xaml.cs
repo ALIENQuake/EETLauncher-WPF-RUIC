@@ -107,7 +107,7 @@ namespace EETLauncherWPF {
             e.CanExecute = true;
         }
 
-        public void PlayEET_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
+        private void PlayEET_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             Process.Start( AppRootPath + GameExeFileName );
             Close();
             Application.Current.Shutdown();
