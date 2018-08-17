@@ -2,6 +2,7 @@
 namespace EETLauncherWPF {
     public static class EETLauncherConfig {
         public static string AppLogFileName;
+        public static string AppRootPath;
         public static string BG2EENotDetected;
         public static string EETBaldurLua;
         public static string EETHomePage;
@@ -18,7 +19,7 @@ namespace EETLauncherWPF {
         public static string GameCfgFileName;
         public static string GameEngineFileName;
         public static string GameExeFileName;
-        public static string AppRootPath;
+        public static string ModManagerHomePage;
         public static string WeiDULogFileName;
     }
 }

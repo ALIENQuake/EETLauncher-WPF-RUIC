@@ -26,7 +26,7 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>
-            <Separator Width="48" Height="12" Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            
             <Label x:Name="EETLauncherMain_LB_SETTINGS" Content="SETTINGS" VerticalAlignment="Top">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDown">
@@ -52,6 +52,13 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDown">
                         <i:InvokeCommandAction Command="{x:Static local:EETLauncherMain.OpenEETHomePage}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Label>
+            <Label x:Name="EETLauncherMain_LB_MODS" Content="MODS" VerticalAlignment="Top">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDown">
+                        <i:InvokeCommandAction Command="{x:Static local:EETLauncherMain.OpenModManagerPage}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Label>

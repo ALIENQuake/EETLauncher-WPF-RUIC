@@ -20,6 +20,7 @@ namespace EETLauncherWPF {
         public static readonly RoutedUICommand OpenEETHomePage = new RoutedUICommand();
         public static readonly RoutedUICommand Exit = new RoutedUICommand();
         public static readonly RoutedUICommand WindowMouseDown = new RoutedUICommand();
+        public static readonly RoutedUICommand OpenModManagerPage = new RoutedUICommand();
 
         public EETLauncherMain() {
 
@@ -29,6 +30,7 @@ namespace EETLauncherWPF {
             CommandBindings.Add( new CommandBinding( CheckForUpdates, CheckForUpdates_OnExecuted, CheckForUpdates_CanExecute ) );
             CommandBindings.Add( new CommandBinding( OpenEETReadMe, OpenEETReadMe_OnExecuted, OpenEETReadMe_CanExecute ) );
             CommandBindings.Add( new CommandBinding( OpenEETHomePage, OpenEETHomePage_OnExecuted, OpenEETHomePage_CanExecute ) );
+            CommandBindings.Add( new CommandBinding( OpenModManagerPage, OpenModManagerPage_OnExecuted, OpenModManagerPage_CanExecute ) );
             CommandBindings.Add( new CommandBinding( Exit, Exit_OnExecuted, Exit_CanExecute ) );
             CommandBindings.Add( new CommandBinding( WindowMouseDown, WindowMouseDown_OnExecuted, WindowMouseDown_CanExecute ) );
 
@@ -48,6 +50,7 @@ namespace EETLauncherWPF {
             BG2EENotDetected = (string) FindResource( "BG2EENotDetected" );
             EETNotDetected = (string) FindResource( "EETNotDetected" );
             EETRequireFirstRun = (string) FindResource( "EETRequireFirstRun" );
+            ModManagerHomePage = (string) FindResource( "ModManagerHomePage" );
             WeiDULogFileName = (string) FindResource( "WeiDULogFileName" );
 
             if ( TestBG2EEDirectory() ) {
@@ -116,6 +119,14 @@ namespace EETLauncherWPF {
 
         private void OpenEETReadMe_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
             Process.Start( AppRootPath + EETReadMeFilePath );
+        }
+
+        private void OpenModManagerPage_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
+            e.CanExecute = true;
+        }
+
+        private void OpenModManagerPage_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
+            Process.Start( ModManagerHomePage );
         }
 
         private void OpenEETHomePage_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {

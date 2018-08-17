@@ -38,5 +38,6 @@
     <system:String x:Key="GameCheckFilePath">data\Hexxat.bif</system:String>
     <system:String x:Key="GameEngineFileName">engine.lua</system:String>
     <system:String x:Key="GameExeFileName">Baldur.exe</system:String>
+    <system:String x:Key="ModManagerHomePage">https://github.com/BigWorldSetup/BigWorldSetup</system:String>
     <system:String x:Key="WeiDULogFileName">weidu.log</system:String>
 </ResourceDictionary>
