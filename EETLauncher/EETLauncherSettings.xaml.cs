@@ -42,7 +42,7 @@ namespace EETLauncherWPF {
         }
 
         private void WindowMouseDown_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            DragMove();
+            try { DragMove(); } catch {}
         }
 
         public static bool GetProcesExitState( Process Process ) {

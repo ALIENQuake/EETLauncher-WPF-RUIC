@@ -81,7 +81,7 @@ namespace EETLauncherWPF {
         }
 
         private void WindowMouseDown_OnExecuted( object sender, ExecutedRoutedEventArgs e ) {
-            DragMove();
+            try { DragMove(); } catch {}
         }
 
         private void OpenSettingsWindow_CanExecute( object sender, CanExecuteRoutedEventArgs e ) {
