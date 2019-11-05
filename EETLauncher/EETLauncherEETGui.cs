@@ -1,6 +1,5 @@
-﻿//Copyright © alienquake@hotmail.com
-namespace EETLauncherWPF
-{
+//Copyright © alienquake@hotmail.com
+namespace EETLauncherWPF {
     public class EETLauncherEETGui {
 
         public string ChangeTo { get; set; }
@@ -10,10 +9,10 @@ namespace EETLauncherWPF
             Current = "BG2";
             ChangeTo = "SoD";
         }
-        public EETLauncherEETGui( string CurrentGui ) {
+        public EETLauncherEETGui(string CurrentGui) {
             Current = CurrentGui;
         }
-        public EETLauncherEETGui( string CurrentGui, string ChangeToGui ) {
+        public EETLauncherEETGui(string CurrentGui, string ChangeToGui) {
             Current = CurrentGui;
             ChangeTo = ChangeToGui;
         }
