@@ -29,8 +29,8 @@
     <system:String x:Key="EETGUIComponentNumber">0</system:String>
     <system:String x:Key="EETGUIExeFileName">setup-EET_GUI.exe</system:String>
     <system:String x:Key="EETGUIModFileName">EET_GUI.tp2</system:String>
-    <system:String x:Key="EETGUIUnknown">Cannot evaluate aviable GUI change list from: </system:String>
-    <system:String x:Key="EETHomePage">http://gibberlings3.net/forums/index.php?showforum=195</system:String>
+    <system:String x:Key="EETGUIUnknown">Cannot evaluate aviable GUI list from:</system:String>
+    <system:String x:Key="EETHomePage">https://www.gibberlings3.net/forums/forum/195-enhanced-edition-trilogy/</system:String>
     <system:String x:Key="EETNotDetected">EET installation not detected</system:String>
     <system:String x:Key="EETReadMeFilePath">EET\readme-EET.html</system:String>
     <system:String x:Key="EETRequireFirstRun">Please start EET once to create Baldur.lua</system:String>
