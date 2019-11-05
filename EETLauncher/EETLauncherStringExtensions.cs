@@ -3,9 +3,9 @@ using System;
 
 namespace EETLauncherWPF {
     public static class EETLauncherStringExtensions {
-        // not included as .NET default ?
-        public static bool ContainsIgnoreCase( string source, string toCheck ) {
-            return source?.IndexOf( toCheck, StringComparison.OrdinalIgnoreCase ) >= 0;
+        // Why this is not build-in method of the .NET?
+        public static bool ContainsIgnoreCase(string source, string toCheck) {
+            return source?.IndexOf(toCheck, StringComparison.OrdinalIgnoreCase) >= 0;
         }
     }
 }
