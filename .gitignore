@@ -1,3 +1,6 @@
+#Fody
+*.xsd
+
 #Visual Studio Code
 .vscode/*
 !.vscode/settings.json
@@ -203,3 +206,4 @@ FakesAssemblies/
 
 # MSBuild Binary and Structured Log
 *.binlog
+
