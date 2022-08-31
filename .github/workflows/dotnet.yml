@@ -26,4 +26,4 @@ jobs:
         run: nuget restore EETLauncherWPF/EETLauncher.csproj
 
       - name: Build solution
-        run: msbuild EETLauncherWPF/EETLauncher.csproj -t:rebuild -property:Configuration=Release
+        run: msbuild EETLauncherWPF/EETLauncher.csproj -property:Configuration=Release
