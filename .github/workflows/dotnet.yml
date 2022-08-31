@@ -21,20 +21,27 @@ jobs:
 
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v1.1
-      
-      - name: Run
-        run: |
-          ls
+
       - name: EETLauncher_snk
         env:
           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
         run: |
           [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String("$env:EETLauncher_snk")) > "EETLauncher/EETLauncher.snk"
+      
       - name: EETLauncherWPF_TemporaryKey_pfx
         env:
           EETLauncher_snk: ${{ secrets.EETLauncherWPF_TemporaryKey_pfx }}
         run: |
           [Text.Encoding]::Utf8.GetString([Convert]::FromBase64String("$env:EETLauncherWPF_TemporaryKey_pfx")) > "EETLauncher/EETLauncherWPF_TemporaryKey.pfx"
+      
+      - name: Import-PfxCertificate
+        run: |
+          Import-PfxCertificate -FilePath D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncherWPF_TemporaryKey.pfx -CertStoreLocation Cert:\CurrentUser\My
+            
+      - name: Get-Childitem -Recurse
+        run: |
+          Get-Childitem -Recurse
+          
       - name: Restore Packages
         run: nuget restore EETLauncher/EETLauncherWPF.csproj
 
