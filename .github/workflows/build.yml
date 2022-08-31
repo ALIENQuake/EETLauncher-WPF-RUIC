@@ -23,7 +23,7 @@ jobs:
         env:
           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
         run: |
-          Set-Content -Path "EETLauncher/ETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+          Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
       
       - name: EETLauncherWPF_TemporaryKey_pfx
         env:
