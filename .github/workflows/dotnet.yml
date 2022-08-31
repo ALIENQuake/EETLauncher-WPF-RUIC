@@ -27,7 +27,7 @@ jobs:
           ls
       
       - name: Restore Packages
-        run: nuget restore EETLauncherWPF/EETLauncher.csproj
+        run: nuget restore EETLauncher/EETLauncherWPF.csproj
 
       - name: Build solution
-        run: msbuild EETLauncherWPF/EETLauncher.csproj -property:Configuration=Release
+        run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
