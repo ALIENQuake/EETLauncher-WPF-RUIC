@@ -30,7 +30,7 @@ jobs:
       
       - name: EETLauncherWPF_TemporaryKey_pfx
         env:
-          EETLauncher_snk: ${{ secrets.EETLauncherWPF_TemporaryKey_pfx }}
+          EETLauncherWPF_TemporaryKey_pfx: ${{ secrets.EETLauncherWPF_TemporaryKey_pfx }}
         run: |
           Set-Content -Path "EETLauncher/EETLauncherWPF_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncherWPF_TemporaryKey_pfx)) -AsByteStream
 
