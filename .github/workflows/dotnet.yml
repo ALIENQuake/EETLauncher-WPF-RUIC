@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
@@ -21,7 +21,11 @@ jobs:
 
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v1.1
-
+      
+      - name: Run
+        run: |
+          ls
+      
       - name: Restore Packages
         run: nuget restore EETLauncherWPF/EETLauncher.csproj
 
