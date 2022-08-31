@@ -57,10 +57,10 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>FB7F92FC2A8BEA94AE5A870D191FE7FD608329E4</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>28022A27451C21A7AB562E08BBC3788171716311</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>
@@ -79,7 +79,7 @@
     <ManifestKeyFile>EETLauncherWPF_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>EETLauncher.snk</AssemblyOriginatorKeyFile>
