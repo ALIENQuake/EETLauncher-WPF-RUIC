@@ -64,7 +64,7 @@ jobs:
       
       - name: Push Destination
         run: |
-          cd ./projectB
+          cd ./Destination
           git add .
           git config user.email "alienquake@hotmail.com"
           git config user.name "ALIENQuake"
