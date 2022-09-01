@@ -51,8 +51,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           function New-Wait {
-            Write-Output "Waiting $arg seconds..."
-            [System.Threading.Thread]::Sleep($args*1000)
+              Write-Output "Waiting $($args[0]) seconds..."
+              [System.Threading.Thread]::Sleep($args[0]*1000)
           }
           Set-Alias -Name Wait -Value New-Wait
 
