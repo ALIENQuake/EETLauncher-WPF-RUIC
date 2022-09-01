@@ -16,46 +16,51 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v3
         with:
-          path: ./Source
+          path: Source
 
-#       - name: Setup NuGet
-#         uses: NuGet/setup-nuget@v1.0.5
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
 
-#       - name: Setup MSBuild
-#         uses: microsoft/setup-msbuild@v1.1
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.1
 
-#       - name: EETLauncher_snk
-#         env:
-#           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
-#         run: |
-#           Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+      - name: EETLauncher_snk
+        env:
+          EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
+        run: |
+          Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+        working-directory: Source
+        
+      - name: EETLauncherWPF_TemporaryKey_pfx
+        env:
+          EETLauncherWPF_TemporaryKey_pfx: ${{ secrets.EETLauncherWPF_TemporaryKey_pfx }}
+        run: |
+          Set-Content -Path "EETLauncher/EETLauncherWPF_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncherWPF_TemporaryKey_pfx)) -AsByteStream
+        working-directory: Source
+        
+      - name: Get-Childitem -Recurse
+        run: |
+          Get-Childitem -Recurse
+        working-directory: Source
+      - name: Import-PfxCertificate
+        run: |
+          Import-PfxCertificate -FilePath "D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\EETLauncherWPF_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+        working-directory: Source
       
-#       - name: EETLauncherWPF_TemporaryKey_pfx
-#         env:
-#           EETLauncherWPF_TemporaryKey_pfx: ${{ secrets.EETLauncherWPF_TemporaryKey_pfx }}
-#         run: |
-#           Set-Content -Path "EETLauncher/EETLauncherWPF_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncherWPF_TemporaryKey_pfx)) -AsByteStream
-
-#       - name: Get-Childitem -Recurse
-#         run: |
-#           Get-Childitem -Recurse
+      - name: Restore Packages
+        run: nuget restore EETLauncher/EETLauncherWPF.csproj
+        working-directory: Source
       
-#       - name: Import-PfxCertificate
-#         run: |
-#           Import-PfxCertificate -FilePath "D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\EETLauncherWPF_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
-      
-#       - name: Restore Packages
-#         run: nuget restore EETLauncher/EETLauncherWPF.csproj
-
-#       - name: Build solution
-#         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
-      
+      - name: Build solution
+        run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
+        working-directory: Source
+        
       - name: Checkout Destination
         uses: actions/checkout@v3
         with: 
           repository: ALIENQuake/EETLauncher
           ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
-          path: ./Destination
+          path: Destination
       
       - name: Create file
         run: |
