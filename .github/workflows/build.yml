@@ -55,28 +55,6 @@ jobs:
           #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
           echo $env:GITHUB_RUN_ID | Out-File z.txt
 
-      - name: Pushes test file
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source_file: 'z.txt'
-          destination_repo: 'ALIENQuake/EETLauncher'
-          user_email: 'alienquake@hotmail.com'
-          user_name: 'ALIENQuake'
-          commit_message: 'Add files via upload'
-
-#       - name: Pushes to another repository
-#         uses: cpina/github-action-push-to-another-repository@main
-#         env:
-#           SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
-#         with:
-#           source-directory: 'Temp'
-#           destination-github-username: 'ALIENQuake'
-#           destination-repository-name: 'EETLauncher'
-#           user-email: alienquake@hotmail.com
-#           commit-message: Add files via upload
-
       - name: Finish
         run: echo Finish
         
