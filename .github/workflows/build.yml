@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: windows-2019
-
+    permissions: write-all
     steps:
       - uses: actions/checkout@v3
 
@@ -84,3 +84,4 @@ jobs:
           git push origin master
           
           echo Finish
+        
