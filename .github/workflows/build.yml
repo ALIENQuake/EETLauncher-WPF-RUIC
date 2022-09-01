@@ -18,10 +18,10 @@ jobs:
         with:
           path: Source
 
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.0.5
+      - name: Setup NuGet.exe for use with actions
+        uses: NuGet/setup-nuget@v1.0.7
 
-      - name: Setup MSBuild
+      - name: Setup MSBuild for use with actions
         uses: microsoft/setup-msbuild@v1.1
 
       - name: EETLauncher_snk
