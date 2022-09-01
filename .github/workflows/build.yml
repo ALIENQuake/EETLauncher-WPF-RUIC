@@ -33,9 +33,9 @@ jobs:
         
       - name: EETLauncher_TemporaryKey_pfx
         env:
-          EETLauncherWPF_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
+          EETLauncher_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
         run: |
-          Set-Content -Path "EETLauncher/EETLauncherWPF_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
+          Set-Content -Path "EETLauncher/EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
         working-directory: Source
         
       - name: Get-Childitem -Recurse
