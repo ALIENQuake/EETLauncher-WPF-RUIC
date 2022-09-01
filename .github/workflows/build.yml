@@ -42,9 +42,10 @@ jobs:
         run: |
           Get-Childitem -Recurse
         working-directory: Source
+      
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+          Import-PfxCertificate -FilePath "GITHUB_WORKSPACE\Source\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
         working-directory: Source
       
       - name: Restore Packages
