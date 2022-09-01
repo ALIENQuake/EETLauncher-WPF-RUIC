@@ -62,22 +62,26 @@ jobs:
           repository: ALIENQuake/EETLauncher
           ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
           path: Destination
-      
-      - name: Create file
+      - name: Get-Childitem -Recurse
         run: |
-          #Copy-Item -Path "$env:GITHUB_WORKSPACE\Destination\EETLauncher\bin\Release\EETLauncher.exe"
-          Get-Item -Path "$env:GITHUB_WORKSPACE\Destination\EETLauncher\bin\Release\EETLauncher.exe"
-          echo $env:GITHUB_RUN_ID | Out-File z.txt
+          Get-Childitem -Recurse
         working-directory: Destination
+
+#       - name: Create file
+#         run: |
+#           #Copy-Item -Path "$env:GITHUB_WORKSPACE\Destination\EETLauncher\bin\Release\EETLauncher.exe"
+#           Get-Item -Path "$env:GITHUB_WORKSPACE\Destination\EETLauncher\bin\Release\EETLauncher.exe"
+#           echo $env:GITHUB_RUN_ID | Out-File z.txt
+#         working-directory: Destination
         
-      - name: Push Destination
-        run: |
-          git add .
-          git config user.email "alienquake@hotmail.com"
-          git config user.name "ALIENQuake"
-          git commit -am "Add files via upload"
-          git push
-        working-directory: Destination
+#       - name: Push Destination
+#         run: |
+#           git add .
+#           git config user.email "alienquake@hotmail.com"
+#           git config user.name "ALIENQuake"
+#           git commit -am "Add files via upload"
+#           git push
+#         working-directory: Destination
  
       - name: Finish
         run: echo Finish
