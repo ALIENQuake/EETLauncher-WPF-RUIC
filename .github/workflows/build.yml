@@ -61,15 +61,16 @@ jobs:
         run: |
           #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
           echo $env:GITHUB_RUN_ID | Out-File z.txt
-      
+        working-directory: Destination
+        
       - name: Push Destination
         run: |
-          cd ./Destination
           git add .
           git config user.email "alienquake@hotmail.com"
           git config user.name "ALIENQuake"
           git commit -am "Add files via upload"
           git push
+        working-directory: Destination
  
       - name: Finish
         run: echo Finish
