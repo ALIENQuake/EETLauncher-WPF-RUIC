@@ -45,7 +45,7 @@ jobs:
       
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "GITHUB_WORKSPACE\Source\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+          Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE\Source\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
         working-directory: Source
       
       - name: Restore Packages
