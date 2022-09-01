@@ -64,7 +64,7 @@ jobs:
       
       - name: Create file
         run: |
-          #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
+          #Copy-Item -Path .\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
           echo $env:GITHUB_RUN_ID | Out-File z.txt
         working-directory: Destination
         
