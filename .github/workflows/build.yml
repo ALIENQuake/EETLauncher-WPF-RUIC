@@ -11,39 +11,39 @@ jobs:
     runs-on: windows-2019
 
     steps:
-      - uses: actions/checkout@v3
+       - uses: actions/checkout@v3
 
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.0.5
+#       - name: Setup NuGet
+#         uses: NuGet/setup-nuget@v1.0.5
 
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.1
+#       - name: Setup MSBuild
+#         uses: microsoft/setup-msbuild@v1.1
 
-      - name: EETLauncher_snk
-        env:
-          EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
-        run: |
-          Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+#       - name: EETLauncher_snk
+#         env:
+#           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
+#         run: |
+#           Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
       
-      - name: EETLauncherWPF_TemporaryKey_pfx
-        env:
-          EETLauncherWPF_TemporaryKey_pfx: ${{ secrets.EETLauncherWPF_TemporaryKey_pfx }}
-        run: |
-          Set-Content -Path "EETLauncher/EETLauncherWPF_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncherWPF_TemporaryKey_pfx)) -AsByteStream
+#       - name: EETLauncherWPF_TemporaryKey_pfx
+#         env:
+#           EETLauncherWPF_TemporaryKey_pfx: ${{ secrets.EETLauncherWPF_TemporaryKey_pfx }}
+#         run: |
+#           Set-Content -Path "EETLauncher/EETLauncherWPF_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncherWPF_TemporaryKey_pfx)) -AsByteStream
 
-      - name: Get-Childitem -Recurse
-        run: |
-          Get-Childitem -Recurse
+#       - name: Get-Childitem -Recurse
+#         run: |
+#           Get-Childitem -Recurse
       
-      - name: Import-PfxCertificate
-        run: |
-          Import-PfxCertificate -FilePath "D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\EETLauncherWPF_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+#       - name: Import-PfxCertificate
+#         run: |
+#           Import-PfxCertificate -FilePath "D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\EETLauncherWPF_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
       
-      - name: Restore Packages
-        run: nuget restore EETLauncher/EETLauncherWPF.csproj
+#       - name: Restore Packages
+#         run: nuget restore EETLauncher/EETLauncherWPF.csproj
 
-      - name: Build solution
-        run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
+#       - name: Build solution
+#         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
       
           
       - name: Upload to https://github.com/ALIENQuake/EETLauncher
@@ -54,8 +54,11 @@ jobs:
               Write-Output "Waiting $($args[0]) seconds..."
               [System.Threading.Thread]::Sleep($args[0]*1000)
           }
+          
           Set-Alias -Name Wait -Value New-Wait
-
+          
+          git config --unset-all http.https://github.com/.extraheader
+          
           Set-Location ${{ github.workspace }}
           New-Item -ItemType Directory -Name Temp | Out-Null
           Wait 1
@@ -65,11 +68,11 @@ jobs:
           git config user.email "alienquake@hotmail.com"
           git config user.name "ALIENQuake"
           Wait 1
-          git remote add origin "https://alienquake:$env:GITHUB_TOKEN@github.com/ALIENQuake/EETLauncher.git" | Out-Null
+          git remote add origin "https://alienquake:$env:GITHUB_TOKEN@github.com/ALIENQuake/EETLauncher.git"
           Wait 1
           git pull origin master --quiet | Out-Null
           Wait 1
-          #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe | Out-Null
+          #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
           echo $env:GITHUB_RUN_ID | Out-File z.txt
           Wait 1
           git add . | Out-Null
