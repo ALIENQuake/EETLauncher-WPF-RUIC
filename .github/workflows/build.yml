@@ -62,17 +62,13 @@ jobs:
           repository: ALIENQuake/EETLauncher
           ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
           path: Destination
-      - name: Get-Childitem -Recurse
-        run: |
-          Get-Childitem -Recurse
-        working-directory: Destination
 
-#       - name: Create file
-#         run: |
-#           #Copy-Item -Path "$env:GITHUB_WORKSPACE\Destination\EETLauncher\bin\Release\EETLauncher.exe"
-#           Get-Item -Path "$env:GITHUB_WORKSPACE\Destination\EETLauncher\bin\Release\EETLauncher.exe"
-#           echo $env:GITHUB_RUN_ID | Out-File z.txt
-#         working-directory: Destination
+      - name: Create file
+        run: |
+          #Copy-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
+          Get-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
+          echo $env:GITHUB_RUN_ID | Out-File z.txt
+        working-directory: Destination
         
 #       - name: Push Destination
 #         run: |
