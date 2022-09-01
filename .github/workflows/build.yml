@@ -70,11 +70,14 @@ jobs:
           }
           Set-Alias -Name Wait -Value New-Wait
           
+          git config user.email "alienquake@hotmail.com"
+          git config user.name "ALIENQuake"
+          
           git add . | Out-Null
           
           Wait 1
           
-          git commit -m "Add files via upload" | Out-Null
+          git commit -m "Add files via upload"
           
           Wait 1
           
