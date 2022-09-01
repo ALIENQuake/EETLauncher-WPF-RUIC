@@ -35,7 +35,7 @@ jobs:
         env:
           EETLauncher_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
         run: |
-          Set-Content -Path "EETLauncher/EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
+          Set-Content -Path "EETLauncher\EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
         working-directory: Source
         
       - name: Get-Childitem -Recurse
@@ -44,7 +44,7 @@ jobs:
         working-directory: Source
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+          Import-PfxCertificate -FilePath "EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
         working-directory: Source
       
       - name: Restore Packages
