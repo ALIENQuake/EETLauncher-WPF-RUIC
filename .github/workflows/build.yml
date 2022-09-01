@@ -51,7 +51,7 @@ jobs:
       - name: Set-Location
         run: |
           Set-Location ../..
-          New-Item -ItemType Directory -Name Temp | Set-Location Temp
+          New-Item -ItemType Directory -Name Temp | Set-Location
       
       - uses: actions/checkout@v3
         with:
