@@ -72,6 +72,7 @@ jobs:
           Wait 1
           git pull origin master --quiet | Out-Null
           Wait 1
+          
           #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
           echo $env:GITHUB_RUN_ID | Out-File z.txt
           Wait 1
@@ -79,4 +80,7 @@ jobs:
           Wait 1
           git commit -m "Add files via upload" | Out-Null
           Wait 1
-          #git push origin master --quiet
+          
+          git push origin master --quiet
+          
+          echo Finish
