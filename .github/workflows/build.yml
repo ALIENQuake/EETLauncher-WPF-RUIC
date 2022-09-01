@@ -12,7 +12,11 @@ jobs:
     runs-on: windows-2019
     permissions: write-all
     steps:
-      - uses: actions/checkout@v3
+      
+      - name: Checkout Source
+        uses: actions/checkout@v3
+        with:
+          path: ./Source
 
 #       - name: Setup NuGet
 #         uses: NuGet/setup-nuget@v1.0.5
@@ -46,15 +50,27 @@ jobs:
 #       - name: Build solution
 #         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
       
-      - uses: actions/checkout@v3
+      - name: Checkout Destination
+        uses: actions/checkout@master
+        with: 
+          repository: tomassirio/projectB
+          token: ${{ secrets.ACTIONS_TOKEN }}
+          path: ./Destination
       
-      - name: Set-Location
+      - name: Create file
         run: |
-          Set-Location ../..
-          New-Item -ItemType Directory -Name Temp | Set-Location
           #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
           echo $env:GITHUB_RUN_ID | Out-File z.txt
-
+      
+      - name: Push Destination
+        run: |
+          cd ./projectB
+          git add .
+          git config user.email "alienquake@hotmail.com"
+          git config user.name "ALIENQuake"
+          git commit -am "Add files via upload"
+          git push
+ 
       - name: Finish
         run: echo Finish
         
