@@ -52,36 +52,20 @@ jobs:
         run: |
           Set-Location ../..
           New-Item -ItemType Directory -Name Temp | Set-Location
-      
-      - uses: actions/checkout@v3
-        with:
-          repository: ALIENQuake/EETLauncher
-          
-      - name: Copy EETLauncher.exe
-        run: |
           #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
           echo $env:GITHUB_RUN_ID | Out-File z.txt
-      
-      - name: Push to https://github.com/ALIENQuake/EETLauncher
-        run: |
-          function New-Wait {
-              Write-Output "Waiting $($args[0]) seconds..."
-              [System.Threading.Thread]::Sleep($args[0]*1000)
-          }
-          Set-Alias -Name Wait -Value New-Wait
-          
-          git config user.email "alienquake@hotmail.com"
-          git config user.name "ALIENQuake"
-          
-          git add . | Out-Null
-          
-          Wait 1
-          
-          git commit -m "Add files via upload"
-          
-          Wait 1
-          
-          git push origin master
-          
-          echo Finish
+
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          source-directory: 'Temp'
+          destination-github-username: 'ALIENQuake'
+          destination-repository-name: 'EETLauncher'
+          user-email: alienquake@hotmail.com
+          commit-message: Add files via upload
+
+      - name: Finish
+        run: echo Finish
         
