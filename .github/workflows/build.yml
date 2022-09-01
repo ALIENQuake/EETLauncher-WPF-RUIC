@@ -46,41 +46,38 @@ jobs:
 #       - name: Build solution
 #         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
       
-      - name: Upload to https://github.com/ALIENQuake/EETLauncher
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v3
+      
+      - name: Set-Location
+        run: |
+          Set-Location ../..
+          New-Item -ItemType Directory -Name Temp | Set-Location Temp
+      
+      - uses: actions/checkout@v3
+        with:
+          repository: ALIENQuake/EETLauncher
+          
+      - name: Copy EETLauncher.exe
+        run: |
+          #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
+          echo $env:GITHUB_RUN_ID | Out-File z.txt
+      
+      - name: Push to https://github.com/ALIENQuake/EETLauncher
         run: |
           function New-Wait {
               Write-Output "Waiting $($args[0]) seconds..."
               [System.Threading.Thread]::Sleep($args[0]*1000)
           }
-          
           Set-Alias -Name Wait -Value New-Wait
           
-          git config --unset-all http.https://github.com/.extraheader
-          
-          Set-Location ${{ github.workspace }}
-          New-Item -ItemType Directory -Name Temp | Out-Null
-          Wait 1
-          Set-Location Temp
-          git init
-          Wait 1
-          git config user.email "alienquake@hotmail.com"
-          git config user.name "ALIENQuake"
-          Wait 1
-          git remote add origin "https://alienquake:$env:GITHUB_TOKEN@github.com/ALIENQuake/EETLauncher.git"
-          Wait 1
-          git pull origin master --quiet | Out-Null
-          Wait 1
-          
-          #Copy-Item -Path D:\a\EETLauncher-WPF\EETLauncher-WPF\EETLauncher\bin\Release\EETLauncher.exe
-          echo $env:GITHUB_RUN_ID | Out-File z.txt
-          Wait 1
           git add . | Out-Null
-          Wait 1
-          git commit -m "Add files via upload" | Out-Null
+          
           Wait 1
           
-          git push origin master --quiet
+          git commit -m "Add files via upload" | Out-Null
+          
+          Wait 1
+          
+          git push origin master
           
           echo Finish
