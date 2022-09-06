@@ -108,7 +108,12 @@ namespace EETLauncherWPF {
         }
 
         private void PlayEET_OnExecuted(object sender, ExecutedRoutedEventArgs e) {
-            Process.Start(AppRootPath + GameExeFileName);
+            bool EEExInstalled = File.Exists(AppRootPath + "EEEx.exe") && File.Exists(AppRootPath + @"override\M__EEex.lu");
+            if (EEExInstalled) {
+                Process.Start(AppRootPath + "EEEx.exe");
+            } else {
+                Process.Start(AppRootPath + GameExeFileName);
+            }
             Close();
             Application.Current.Shutdown();
         }
