@@ -78,7 +78,11 @@ jobs:
 #           git commit -am "Add files via upload"
 #           git push
 #         working-directory: Destination
- 
+
+      - name: EETLauncher.exe artifact
+        uses: actions/upload-artifact@v3
+        with:
+          path: D:/a/EETLauncher-WPF/EETLauncher-WPF/Source/EETLauncher/bin/Release/EETLauncher.exe
       - name: Finish
         run: echo Finish
         
