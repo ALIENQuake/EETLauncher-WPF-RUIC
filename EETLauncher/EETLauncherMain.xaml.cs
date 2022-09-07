@@ -108,9 +108,9 @@ namespace EETLauncherWPF {
         }
 
         private void PlayEET_OnExecuted(object sender, ExecutedRoutedEventArgs e) {
-            bool EEExInstalled = (File.Exists(AppRootPath + "EEEx.exe") | File.Exists(AppRootPath + "InfinityLoader.exe")) & File.Exists(AppRootPath + "override" + Path.DirectorySeparatorChar + "M___EEex.lua");
+            bool EEExInstalled = File.Exists(AppRootPath + "InfinityLoader.exe") & File.Exists(AppRootPath + "override" + Path.DirectorySeparatorChar + "M___EEex.lua");
             if (EEExInstalled) {
-                Process.Start(AppRootPath + "EEEx.exe");
+                Process.Start(AppRootPath + "InfinityLoader.exe");
             } else {
                 Process.Start(AppRootPath + GameExeFileName);
             }
