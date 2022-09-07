@@ -24,12 +24,12 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <system:String x:Key="AppLogFileName">EETLauncher.log</system:String>
-    <system:String x:Key="BG2EENotDetected">Please put EETLanucher.exe inside BG2EE directory</system:String>
+    <system:String x:Key="BG2EENotDetected">Please put EETLauncher.exe inside BG2EE directory</system:String>
     <system:String x:Key="EETFlagFilePath">Override\EET.Flag</system:String>
     <system:String x:Key="EETGUIComponentNumber">0</system:String>
     <system:String x:Key="EETGUIExeFileName">setup-EET_GUI.exe</system:String>
     <system:String x:Key="EETGUIModFileName">EET_GUI.tp2</system:String>
-    <system:String x:Key="EETGUIUnknown">Cannot evaluate aviable GUI list from:</system:String>
+    <system:String x:Key="EETGUIUnknown">Cannot evaluate available GUI list from:</system:String>
     <system:String x:Key="EETHomePage">https://www.gibberlings3.net/forums/forum/195-enhanced-edition-trilogy/</system:String>
     <system:String x:Key="EETNotDetected">EET installation not detected</system:String>
     <system:String x:Key="EETReadMeFilePath">EET\readme-EET.html</system:String>
