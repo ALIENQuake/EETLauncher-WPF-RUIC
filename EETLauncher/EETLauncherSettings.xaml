@@ -7,6 +7,7 @@
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:local="clr-namespace:EETLauncherWPF"
     mc:Ignorable="d"
+    ShowInTaskbar="False"
     Title="EETLauncherSettings" Height="361" Width="345" Background="Black" Foreground="White" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseLeftButtonDown">
