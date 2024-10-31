@@ -9,6 +9,9 @@ jobs:
   build:
     runs-on: windows-2019
     permissions: write-all
+    env:
+      ProjectName: "EETLauncherWPF"
+      Configuration: "Release"
     steps:
       
       - name: Checkout Source
@@ -37,16 +40,16 @@ jobs:
           Import-PfxCertificate -FilePath "${{ github.workspace }}\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
       
       - name: Restore Packages
-        run: nuget restore EETLauncher\EETLauncherWPF.csproj
+        run: nuget restore EETLauncher\$ProjectName.csproj
       
       - name: Build solution
-        run: msbuild EETLauncher\EETLauncherWPF.csproj -property:Configuration=Release
+        run: msbuild EETLauncher\$ProjectName.csproj -property:Configuration=$Configuration
 
       - name: EETLauncher.exe artifact
         uses: actions/upload-artifact@v4.4.3
         with:
           name: EETLauncher
-          path: ${{ github.workspace }}\EETLauncher\bin\Release\net48\EETLauncher.exe
+          path: ${{ github.workspace }}\EETLauncher\bin\$Configuration\net48\EETLauncher.exe
       
       - name: Checkout Destination
         if: github.ref_type == 'tag'
@@ -58,7 +61,7 @@ jobs:
       - name: Create file
         if: github.ref_type == 'tag'
         run: |
-          Copy-Item -Path "${{ github.workspace }}\EETLauncher\bin\Release\net48\EETLauncher.exe"
+          Copy-Item -Path "${{ github.workspace }}\EETLauncher\bin\$Configuration\net48\EETLauncher.exe"
         working-directory: Destination
 
       - name: Get-Childitem -Recurse at Destination
