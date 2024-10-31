@@ -82,7 +82,7 @@
     <PackageReference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="EETLauncherWPF_TemporaryKey.pfx" />
+    <None Include="EETLauncher_TemporaryKey.pfx" />
     <Resource Include="Resources\EETLauncher-FRADMCN.ttf" />
   </ItemGroup>
   <ItemGroup>
