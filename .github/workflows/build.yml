@@ -12,56 +12,56 @@ jobs:
     steps:
       
       - name: Checkout Source
-        uses: actions\checkout@v4.2.2
+        uses: actions/checkout@v4.2.2
 
       - name: Setup NuGet.exe for use with actions
-        uses: NuGet\setup-nuget@v2.0.0
+        uses: NuGet/setup-nuget@v2.0.0
 
       - name: setup-msbuild
-        uses: microsoft\setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v2
 
       - name: EETLauncher_snk
         env:
           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
         run: |
-          Set-Content -Path "EETLauncher\EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+          Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
         
       - name: EETLauncher_TemporaryKey_pfx
         env:
           EETLauncher_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
         run: |
-          Set-Content -Path "EETLauncher\EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
+          Set-Content -Path "EETLauncher/EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
      
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "${{ github.workspace }}\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+          Import-PfxCertificate -FilePath "${{ github.workspace }}/EETLauncher/EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:/CurrentUser/My
       
       - name: Restore Packages
-        run: nuget restore EETLauncher\EETLauncherWPF.csproj
+        run: nuget restore EETLauncher/EETLauncherWPF.csproj
       
       - name: Build solution
-        run: msbuild EETLauncher\EETLauncherWPF.csproj -property:Configuration=Release
+        run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
 
       - name: Get-Childitem -Recurse
         run: |
           Get-Childitem -Recurse
 
       - name: EETLauncher.exe artifact
-        uses: actions\upload-artifact@v4.4.3
+        uses: actions/upload-artifact@v4.4.3
         with:
           name: EETLauncher.exe
-          path: ${{ github.workspace }}\EETLauncher\bin\Release\EETLauncher.exe
+          path: ${{ github.workspace }}/EETLauncher/bin/Release/EETLauncher.exe
       
       # - name: Checkout Destination
-      #   uses: actions\checkout@v3
+      #   uses: actions/checkout@v3
       #   with: 
-      #     repository: ALIENQuake\EETLauncher
+      #     repository: ALIENQuake/EETLauncher
       #     ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
       #     path: Destination
 
       # - name: Create file
       #   run: |
-      #     Copy-Item -Path "$env:GITHUB_WORKSPACE\EETLauncher\bin\Release\EETLauncher.exe"
+      #     Copy-Item -Path "$env:GITHUB_WORKSPACE/EETLauncher/bin/Release/EETLauncher.exe"
       #   working-directory: Destination
       
       # - name: Push Destination
