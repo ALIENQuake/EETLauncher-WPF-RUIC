@@ -49,31 +49,32 @@ jobs:
           path: ${{ github.workspace }}\EETLauncher\bin\Release\net48\EETLauncher.exe
       
       - name: Checkout Destination
+        if: github.ref_type == 'tag'
         uses: actions/checkout@v4.2.2
         with: 
           repository: ALIENQuake/EETLauncher
           path: Destination
 
       - name: Create file
+        if: github.ref_type == 'tag'
         run: |
           Copy-Item -Path "${{ github.workspace }}\EETLauncher\bin\Release\net48\EETLauncher.exe"
         working-directory: Destination
 
       - name: Get-Childitem -Recurse at Destination
+        if: github.ref_type == 'tag'
         run: |
           Get-Childitem -Recurse -Force
         working-directory: Destination
 
-      - name: Push Destination
-        if: false
+      - name: Upload EETLauncher.exe directly into ALIENQuake/EETLauncher repo
+        if: github.ref_type == 'tag'
         run: |
           git add .
           git config user.email "alienquake@hotmail.com"
           git config user.name "ALIENQuake"
           git commit -am "Add files via upload"
-          #git push
+          git push
         working-directory: Destination
-      
-      - name: Finish
-        run: echo Finish
+
         
