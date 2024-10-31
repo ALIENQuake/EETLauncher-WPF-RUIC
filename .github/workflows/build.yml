@@ -13,8 +13,6 @@ jobs:
       
       - name: Checkout Source
         uses: actions/checkout@v3
-        with:
-          path: Source
 
       - name: Setup NuGet.exe for use with actions
         uses: NuGet/setup-nuget@v1.0.7
@@ -65,7 +63,6 @@ jobs:
         run: |
           Copy-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
           #Get-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
-          #echo $env:GITHUB_RUN_ID | Out-File z.txt
         working-directory: Destination
         
       - name: Push Destination
@@ -81,7 +78,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: EETLauncher.zip
-          path: D:/a/EETLauncher-WPF/EETLauncher-WPF/Source/EETLauncher/bin/Release/EETLauncher.exe
+          path: D:/a/EETLauncher-WPF-RUIC/EETLauncher-WPF-RUIC/Source/EETLauncher/bin/Release/EETLauncher.exe
       
       - name: Finish
         run: echo Finish
