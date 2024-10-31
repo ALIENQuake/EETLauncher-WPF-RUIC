@@ -24,7 +24,7 @@ jobs:
         env:
           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
         run: |
-          Set-Content -Path "${{ github.repository }}/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+          Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
         
       - name: EETLauncher_TemporaryKey_pfx
         env:
@@ -38,7 +38,7 @@ jobs:
       
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE/EETLauncher/EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:/CurrentUser/My
+          Import-PfxCertificate -FilePath "${{ github.workspace }}/EETLauncher/EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:/CurrentUser/My
       
       - name: Restore Packages
         run: nuget restore EETLauncher/EETLauncherWPF.csproj
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v4.4.3
         with:
           name: EETLauncher.exe
-          path: EETLauncher/bin/Release/EETLauncher.exe
+          path: ${{ github.workspace }}/EETLauncher/bin/Release/EETLauncher.exe
       
       # - name: Checkout Destination
       #   uses: actions/checkout@v3
