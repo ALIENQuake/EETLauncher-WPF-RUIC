@@ -30,7 +30,7 @@ jobs:
         env:
           EETLauncher_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
         run: |
-          Set-Content -Path "EETLauncher\EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
+          Set-Content -Path "EETLauncher/EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
         
       - name: Get-Childitem -Recurse
         run: |
@@ -38,7 +38,7 @@ jobs:
       
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+          Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE/EETLauncher/EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:/CurrentUser/My
       
       - name: Restore Packages
         run: nuget restore EETLauncher/EETLauncherWPF.csproj
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: EETLauncher.zip
-          path: $env:GITHUB_WORKSPACE\EETLauncher\\bin\Release\EETLauncher.exe
+          path: $env:GITHUB_WORKSPACE/EETLauncher//bin/Release/EETLauncher.exe
       
       # - name: Checkout Destination
       #   uses: actions/checkout@v3
@@ -61,7 +61,7 @@ jobs:
 
       # - name: Create file
       #   run: |
-      #     Copy-Item -Path "$env:GITHUB_WORKSPACE\EETLauncher\bin\Release\EETLauncher.exe"
+      #     Copy-Item -Path "$env:GITHUB_WORKSPACE/EETLauncher/bin/Release/EETLauncher.exe"
       #   working-directory: Destination
       
       # - name: Push Destination
