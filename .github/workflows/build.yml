@@ -47,10 +47,10 @@ jobs:
         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
 
       - name: EETLauncher.exe artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.3
         with:
           name: EETLauncher.exe
-          path: $env:GITHUB_WORKSPACE/EETLauncher/bin/Release/EETLauncher.exe
+          path: EETLauncher/bin/Release/EETLauncher.exe
       
       # - name: Checkout Destination
       #   uses: actions/checkout@v3
