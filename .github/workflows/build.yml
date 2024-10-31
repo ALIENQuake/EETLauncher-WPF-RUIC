@@ -45,7 +45,13 @@ jobs:
       
       - name: Build solution
         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
-        
+
+      - name: EETLauncher.exe artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: EETLauncher.zip
+          path: D:/a/EETLauncher-WPF-RUIC/EETLauncher-WPF-RUIC/EETLauncher/bin/Release/EETLauncher.exe
+      
       # - name: Checkout Destination
       #   uses: actions/checkout@v3
       #   with: 
@@ -55,10 +61,9 @@ jobs:
 
       # - name: Create file
       #   run: |
-      #     Copy-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
-      #     #Get-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
+      #     Copy-Item -Path "$env:GITHUB_WORKSPACE\EETLauncher\bin\Release\EETLauncher.exe"
       #   working-directory: Destination
-        
+      
       # - name: Push Destination
       #   run: |
       #     git add .
@@ -67,12 +72,6 @@ jobs:
       #     git commit -am "Add files via upload"
       #     git push
       #   working-directory: Destination
-
-      # - name: EETLauncher.exe artifact
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: EETLauncher.zip
-      #     path: D:/a/EETLauncher-WPF-RUIC/EETLauncher-WPF-RUIC/Source/EETLauncher/bin/Release/EETLauncher.exe
       
       # - name: Finish
       #   run: echo Finish
