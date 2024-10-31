@@ -39,15 +39,12 @@ jobs:
       - name: Import-PfxCertificate
         run: |
           Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE\Source\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
-        working-directory: Source
       
       - name: Restore Packages
         run: nuget restore EETLauncher/EETLauncherWPF.csproj
-        working-directory: Source
       
       - name: Build solution
         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
-        working-directory: Source
         
       # - name: Checkout Destination
       #   uses: actions/checkout@v3
