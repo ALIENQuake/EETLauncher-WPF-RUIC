@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup NuGet.exe for use with actions
-        uses: NuGet/setup-nuget@v1.0.7
+        uses: NuGet/setup-nuget@v2.0.0
 
-      - name: Setup MSBuild for use with actions
-        uses: microsoft/setup-msbuild@v1.1
+      - name: setup-msbuild
+        uses: microsoft/setup-msbuild@v2
 
       - name: EETLauncher_snk
         env:
