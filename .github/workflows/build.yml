@@ -62,7 +62,7 @@ jobs:
 
       - name: Get-Childitem -Recurse at Destination
         run: |
-          Get-Childitem -Recurse
+          Get-Childitem -Recurse -Force
         working-directory: Destination
 
       # - name: Push Destination
