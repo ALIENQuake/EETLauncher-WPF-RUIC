@@ -71,7 +71,7 @@ jobs:
           git config user.email "alienquake@hotmail.com"
           git config user.name "ALIENQuake"
           git commit -am "Add files via upload"
-          git push
+          #git push
         working-directory: Destination
       
       - name: Finish
