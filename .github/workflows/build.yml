@@ -24,29 +24,29 @@ jobs:
         env:
           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
         run: |
-          Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
+          Set-Content -Path "EETLauncher\EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
         
       - name: EETLauncher_TemporaryKey_pfx
         env:
           EETLauncher_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
         run: |
-          Set-Content -Path "EETLauncher/EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
+          Set-Content -Path "EETLauncher\EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
      
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "${{ github.workspace }}/EETLauncher/EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:/CurrentUser/My
+          Import-PfxCertificate -FilePath "${{ github.workspace }}\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
       
       - name: Restore Packages
-        run: nuget restore EETLauncher/EETLauncherWPF.csproj
+        run: nuget restore EETLauncher\EETLauncherWPF.csproj
       
       - name: Build solution
-        run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
+        run: msbuild EETLauncher\EETLauncherWPF.csproj -property:Configuration=Release
 
       - name: EETLauncher.exe artifact
         uses: actions/upload-artifact@v4.4.3
         with:
           name: EETLauncher
-          path: ${{ github.workspace }}/EETLauncher/bin/Release/net48/EETLauncher.exe
+          path: ${{ github.workspace }}\EETLauncher\bin\Release\net48\EETLauncher.exe
       
       - name: Checkout Destination
         uses: actions/checkout@v4.2.2
@@ -57,7 +57,7 @@ jobs:
 
       - name: Create file
         run: |
-          Copy-Item -Path "${{ github.workspace }}/EETLauncher/bin/Release/net48/EETLauncher.exe"
+          Copy-Item -Path "${{ github.workspace }}\EETLauncher\bin\Release\net48\EETLauncher.exe"
         working-directory: Destination
 
       - name: Get-Childitem -Recurse at Destination
