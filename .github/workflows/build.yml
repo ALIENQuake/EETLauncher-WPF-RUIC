@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v4.4.3
         with:
           name: EETLauncher.exe
-          path: ${{ github.workspace }}/EETLauncher/bin/Release/EETLauncher.exe
+          path: ${{ github.workspace }}/EETLauncher/bin/Release/net48/EETLauncher.exe
       
       # - name: Checkout Destination
       #   uses: actions/checkout@v3
