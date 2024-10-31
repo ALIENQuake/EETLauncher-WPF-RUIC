@@ -43,13 +43,13 @@ jobs:
         run: nuget restore EETLauncher\$ProjectName.csproj
       
       - name: Build solution
-        run: msbuild EETLauncher\$ProjectName.csproj -property:Configuration=$Configuration
+        run: msbuild EETLauncher\$ProjectName.csproj -property:Configuration=${{ env.Configuration }}
 
       - name: EETLauncher.exe artifact
         uses: actions/upload-artifact@v4.4.3
         with:
           name: EETLauncher
-          path: ${{ github.workspace }}\EETLauncher\bin\$Configuration\net48\EETLauncher.exe
+          path: ${{ github.workspace }}\EETLauncher\bin\${{ env.Configuration }}\net48\EETLauncher.exe
       
       - name: Checkout Destination
         if: github.ref_type == 'tag'
@@ -61,7 +61,7 @@ jobs:
       - name: Create file
         if: github.ref_type == 'tag'
         run: |
-          Copy-Item -Path "${{ github.workspace }}\EETLauncher\bin\$Configuration\net48\EETLauncher.exe"
+          Copy-Item -Path "${{ github.workspace }}\EETLauncher\bin\${{ env.Configuration }}\net48\EETLauncher.exe"
         working-directory: Destination
 
       - name: Get-Childitem -Recurse at Destination
