@@ -52,17 +52,17 @@ jobs:
           name: EETLauncher.exe
           path: ${{ github.workspace }}/EETLauncher/bin/Release/net48/EETLauncher.exe
       
-      # - name: Checkout Destination
-      #   uses: actions/checkout@v3
-      #   with: 
-      #     repository: ALIENQuake/EETLauncher
-      #     ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
-      #     path: Destination
+      - name: Checkout Destination
+        uses: actions/checkout@v4.2.2
+        with: 
+          repository: ALIENQuake/EETLauncher
+          ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
+          path: Destination
 
-      # - name: Create file
-      #   run: |
-      #     Copy-Item -Path "$env:GITHUB_WORKSPACE/EETLauncher/bin/Release/EETLauncher.exe"
-      #   working-directory: Destination
+      - name: Create file
+        run: |
+          Copy-Item -Path "${{ github.workspace }}/EETLauncher/bin/Release/net48/EETLauncher.exe"
+        working-directory: Destination
       
       # - name: Push Destination
       #   run: |
@@ -73,6 +73,6 @@ jobs:
       #     git push
       #   working-directory: Destination
       
-      # - name: Finish
-      #   run: echo Finish
+      - name: Finish
+        run: echo Finish
         
