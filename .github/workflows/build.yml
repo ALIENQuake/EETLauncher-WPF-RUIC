@@ -52,34 +52,34 @@ jobs:
         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
         working-directory: Source
         
-      - name: Checkout Destination
-        uses: actions/checkout@v3
-        with: 
-          repository: ALIENQuake/EETLauncher
-          ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
-          path: Destination
+      # - name: Checkout Destination
+      #   uses: actions/checkout@v3
+      #   with: 
+      #     repository: ALIENQuake/EETLauncher
+      #     ssh-key: ${{ secrets.ALIENQUAKE_EETLAUNCHER_SSH_KEY }}
+      #     path: Destination
 
-      - name: Create file
-        run: |
-          Copy-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
-          #Get-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
-        working-directory: Destination
+      # - name: Create file
+      #   run: |
+      #     Copy-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
+      #     #Get-Item -Path "$env:GITHUB_WORKSPACE\Source\EETLauncher\bin\Release\EETLauncher.exe"
+      #   working-directory: Destination
         
-      - name: Push Destination
-        run: |
-          git add .
-          git config user.email "alienquake@hotmail.com"
-          git config user.name "ALIENQuake"
-          git commit -am "Add files via upload"
-          git push
-        working-directory: Destination
+      # - name: Push Destination
+      #   run: |
+      #     git add .
+      #     git config user.email "alienquake@hotmail.com"
+      #     git config user.name "ALIENQuake"
+      #     git commit -am "Add files via upload"
+      #     git push
+      #   working-directory: Destination
 
-      - name: EETLauncher.exe artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: EETLauncher.zip
-          path: D:/a/EETLauncher-WPF-RUIC/EETLauncher-WPF-RUIC/Source/EETLauncher/bin/Release/EETLauncher.exe
+      # - name: EETLauncher.exe artifact
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: EETLauncher.zip
+      #     path: D:/a/EETLauncher-WPF-RUIC/EETLauncher-WPF-RUIC/Source/EETLauncher/bin/Release/EETLauncher.exe
       
-      - name: Finish
-        run: echo Finish
+      # - name: Finish
+      #   run: echo Finish
         
