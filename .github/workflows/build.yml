@@ -42,14 +42,10 @@ jobs:
       - name: Build solution
         run: msbuild EETLauncher/EETLauncherWPF.csproj -property:Configuration=Release
 
-      - name: Get-Childitem -Recurse
-        run: |
-          Get-Childitem -Recurse
-
       - name: EETLauncher.exe artifact
         uses: actions/upload-artifact@v4.4.3
         with:
-          name: EETLauncher.exe
+          name: EETLauncher
           path: ${{ github.workspace }}/EETLauncher/bin/Release/net48/EETLauncher.exe
       
       - name: Checkout Destination
@@ -63,7 +59,12 @@ jobs:
         run: |
           Copy-Item -Path "${{ github.workspace }}/EETLauncher/bin/Release/net48/EETLauncher.exe"
         working-directory: Destination
-      
+
+      - name: Get-Childitem -Recurse at Destination
+        run: |
+          Get-Childitem -Recurse
+        working-directory: Destination
+
       # - name: Push Destination
       #   run: |
       #     git add .
