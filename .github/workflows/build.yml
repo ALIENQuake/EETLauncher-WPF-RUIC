@@ -38,7 +38,7 @@ jobs:
       
       - name: Import-PfxCertificate
         run: |
-          Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE\Source\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
+          Import-PfxCertificate -FilePath "$env:GITHUB_WORKSPACE\EETLauncher\EETLauncher_TemporaryKey.pfx" -CertStoreLocation Cert:\CurrentUser\My
       
       - name: Restore Packages
         run: nuget restore EETLauncher/EETLauncherWPF.csproj
