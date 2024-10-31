@@ -25,19 +25,16 @@ jobs:
           EETLauncher_snk: ${{ secrets.EETLauncher_snk }}
         run: |
           Set-Content -Path "EETLauncher/EETLauncher.snk" -Value ([System.Convert]::FromBase64String($env:EETLauncher_snk)) -AsByteStream
-        working-directory: Source
         
       - name: EETLauncher_TemporaryKey_pfx
         env:
           EETLauncher_TemporaryKey_pfx: ${{ secrets.EETLauncher_TemporaryKey_pfx }}
         run: |
           Set-Content -Path "EETLauncher\EETLauncher_TemporaryKey.pfx" -Value ([System.Convert]::FromBase64String($env:EETLauncher_TemporaryKey_pfx)) -AsByteStream
-        working-directory: Source
         
       - name: Get-Childitem -Recurse
         run: |
           Get-Childitem -Recurse
-        working-directory: Source
       
       - name: Import-PfxCertificate
         run: |
