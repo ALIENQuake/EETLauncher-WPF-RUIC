@@ -44,6 +44,7 @@ namespace EETLauncherWPF {
             EETGUIModFileName = (string)FindResource("EETGUIModFileName");
             EETGUIExeFileName = (string)FindResource("EETGUIExeFileName");
             EETGUIUnknown = (string)FindResource("EETGUIUnknown");
+            EETModFileName = (string)FindResource("EETModFileName");
             EETHomePage = (string)FindResource("EETHomePage");
             EETReadMeFilePath = (string)FindResource("EETReadMeFilePath");
             EETFlagFilePath = (string)FindResource("EETFlagFilePath");

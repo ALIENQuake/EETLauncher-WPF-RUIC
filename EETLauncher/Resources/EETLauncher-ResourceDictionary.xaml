@@ -26,6 +26,7 @@
     <system:String x:Key="AppLogFileName">EETLauncher.log</system:String>
     <system:String x:Key="BG2EENotDetected">Please put EETLauncher.exe inside BG2EE directory</system:String>
     <system:String x:Key="EETFlagFilePath">Override\EET.Flag</system:String>
+    <system:String x:Key="EETModFileName">EET.tp2</system:String>
     <system:String x:Key="EETGUIComponentNumber">0</system:String>
     <system:String x:Key="EETGUIExeFileName">setup-EET_GUI.exe</system:String>
     <system:String x:Key="EETGUIModFileName">EET_GUI.tp2</system:String>

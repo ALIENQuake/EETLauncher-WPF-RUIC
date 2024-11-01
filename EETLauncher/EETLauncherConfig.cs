@@ -1,25 +1,26 @@
 //Copyright © alienquake@hotmail.com
 namespace EETLauncherWPF {
     public static class EETLauncherConfig {
-        public static string AppLogFileName;
-        public static string AppRootPath;
-        public static string BG2EENotDetected;
-        public static string EETBaldurLua;
-        public static string EETHomePage;
-        public static string EETFlagFilePath;
-        public static string EETGUIExeFileName;
-        public static string EETGUIModFileName;
-        public static string EETGUIComponentNumber;
-        public static string EETGUIUnknown;
-        public static string EETReadMeFilePath;
-        public static string EETNotDetected;
-        public static string EETRequireFirstRun;
-        public static string GameCheckFilePath;
-        public static string GameCfgDirectory;
-        public static string GameCfgFileName;
-        public static string GameEngineFileName;
-        public static string GameExeFileName;
-        public static string ModManagerHomePage;
-        public static string WeiDULogFileName;
+        internal static string AppLogFileName;
+        internal static string AppRootPath;
+        internal static string BG2EENotDetected;
+        internal static string EETBaldurLua;
+        internal static string EETHomePage;
+        internal static string EETModFileName;
+        internal static string EETFlagFilePath;
+        internal static string EETGUIExeFileName;
+        internal static string EETGUIModFileName;
+        internal static string EETGUIComponentNumber;
+        internal static string EETGUIUnknown;
+        internal static string EETReadMeFilePath;
+        internal static string EETNotDetected;
+        internal static string EETRequireFirstRun;
+        internal static string GameCheckFilePath;
+        internal static string GameCfgDirectory;
+        internal static string GameCfgFileName;
+        internal static string GameEngineFileName;
+        internal static string GameExeFileName;
+        internal static string ModManagerHomePage;
+        internal static string WeiDULogFileName;
     }
 }
