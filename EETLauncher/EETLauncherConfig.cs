@@ -1,5 +1,5 @@
 //Copyright © alienquake@hotmail.com
-namespace EETLauncherWPF {
+namespace EETLauncher {
     public static class EETLauncherConfig {
         internal static string AppLogFileName;
         internal static string AppRootPath;

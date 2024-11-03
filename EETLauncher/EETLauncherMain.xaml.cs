@@ -4,10 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using static EETLauncherWPF.EETLauncherConfig;
-using static EETLauncherWPF.EETLauncherGlobal;
+using static EETLauncher.EETLauncherConfig;
+using static EETLauncher.EETLauncherGlobal;
 
-namespace EETLauncherWPF {
+namespace EETLauncher {
     /// <summary>
     /// Interaction logic for <see cref="EETLauncher"/>.xaml
     /// </summary>

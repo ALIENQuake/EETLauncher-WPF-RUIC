@@ -1,10 +1,10 @@
 using System.Windows;
 
-namespace EETLauncherWPF {
+namespace EETLauncher {
     /// <summary>
     /// Interaction logic for EETLauncher.xaml
     /// </summary>
 
-    public partial class EETLauncher : Application {
+    public partial class App : Application {
     }
 }

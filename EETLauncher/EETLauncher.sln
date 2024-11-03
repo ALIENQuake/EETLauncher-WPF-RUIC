@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EETLauncher", "EETLauncher.csproj", "{472A3BA3-AEF9-406A-BDE2-1C20586A4C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EETLauncherWPF", "EETLauncherWPF.csproj", "{472A3BA3-AEF9-406A-BDE2-1C20586A4C1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using static EETLauncherWPF.EETLauncherConfig;
-using static EETLauncherWPF.EETLauncherExtensionMethod;
+using static EETLauncher.EETLauncherConfig;
+using static EETLauncher.EETLauncherExtensionMethod;
 
-namespace EETLauncherWPF {
+namespace EETLauncher {
     public static class EETLauncherGlobal {
         public static bool TestEETBaldurLua() {
             return File.Exists(EETBaldurLua);

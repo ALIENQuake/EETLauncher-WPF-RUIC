@@ -1,5 +1,5 @@
 //Copyright © alienquake@hotmail.com
-namespace EETLauncherWPF {
+namespace EETLauncher {
     public class EETLauncherEETGui {
 
         public string ChangeTo { get; set; }
