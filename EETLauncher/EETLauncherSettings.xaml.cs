@@ -75,9 +75,14 @@ namespace EETLauncherWPF {
                 var result = await TaskEx.Run(() => {
                     EETGuiProcess.Start();
                     if (EETGuiProcess.Id >= 0) {
-                        EETGuiProcess?.WaitForExit();
-                    } else {
-                        EETGuiProcess = null;
+                        if (EETGuiProcess == null || EETGuiProcess.Id < 0)
+                        {
+                            return null;
+                        }
+                        EETGuiProcess.WaitForExit();
+                        return EETGuiProcess;
+                    } else if (EETGuiProcess == null){
+                        return null;
                     }
                     return EETGuiProcess;
                 });
