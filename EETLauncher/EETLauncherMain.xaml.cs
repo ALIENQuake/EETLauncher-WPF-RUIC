@@ -40,11 +40,11 @@ namespace EETLauncherWPF {
             GameCfgFileName = (string)FindResource("GameCfgFileName");
             GameExeFileName = (string)FindResource("GameExeFileName");
             GameEngineFileName = (string)FindResource("GameEngineFileName");
+            EETModFileName = (string)FindResource("EETModFileName");
             EETGUIComponentNumber = (string)FindResource("EETGUIComponentNumber");
             EETGUIModFileName = (string)FindResource("EETGUIModFileName");
             EETGUIExeFileName = (string)FindResource("EETGUIExeFileName");
             EETGUIUnknown = (string)FindResource("EETGUIUnknown");
-            EETModFileName = (string)FindResource("EETModFileName");
             EETHomePage = (string)FindResource("EETHomePage");
             EETReadMeFilePath = (string)FindResource("EETReadMeFilePath");
             EETFlagFilePath = (string)FindResource("EETFlagFilePath");

@@ -188,8 +188,20 @@ UpgradeLog*.htm
 ServiceFabricBackup/
 *.rptproj.bak
 
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Business Intelligence projects
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+*.rptproj.rsuser
+
 # Microsoft Fakes
 FakesAssemblies/
 
 # MSBuild Binary and Structured Log
 *.binlog
+

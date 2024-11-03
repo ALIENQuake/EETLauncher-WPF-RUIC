@@ -68,7 +68,7 @@ namespace EETLauncherWPF {
             EETLauncherSettings_L_CurrentGui.Visibility = Visibility.Hidden;
             EETLauncherSettings_L_CurrentGui.Foreground = new SolidColorBrush(Colors.White);
 
-            var EETGuiProcess = new Process { StartInfo = SetEETGUI(EETGui.ChangeTo) };
+            using (var EETGuiProcess = new Process { StartInfo = SetEETGUI(EETGui.ChangeTo) }) {
 
             try {
                 // because we want to target .NET 4.0, we are using TaskEx.Run from Microsoft.Bcl.Async instead of default Task.Run from .NET Framework 4.5
@@ -94,6 +94,8 @@ namespace EETLauncherWPF {
                 EETLauncherSettings_TB_Log.Visibility = Visibility.Visible;
                 EETLauncherSettings_TB_Log.Text = ex.Message;
                 File.AppendAllText(Environment.SpecialFolder.ApplicationData + Path.DirectorySeparatorChar + AppLogFileName, ex.Message + Environment.NewLine);
+				throw;
+				}
             }
         }
 
