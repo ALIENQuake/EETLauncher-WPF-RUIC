@@ -46,7 +46,7 @@ jobs:
         run: msbuild EETLauncher\${{ env.ProjectName }}.csproj -property:Configuration=${{ env.Configuration }}
 
       - name: EETLauncher.exe artifact
-        uses: actions/upload-artifact@v4.4.3
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: EETLauncher
           path: ${{ github.workspace }}\EETLauncher\bin\${{ env.Configuration }}\net48\EETLauncher.exe
