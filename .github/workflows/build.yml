@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     permissions: write-all
     env:
-      ProjectName: "EETLauncherWPF"
+      ProjectName: "EETLauncher"
       Configuration: "Release"
     steps:
       
