@@ -1,3 +1,22 @@
-[![build](https://github.com/ALIENQuake/EETLauncher-WPF/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/ALIENQuake/EETLauncher-WPF/actions/workflows/build.yml)
+# EETLauncher - WPF
 
-https://www.gibberlings3.net/forums/topic/29123-eetlauncher/?tab=comments#comment-257836
+**EETLauncher** is a launcher for EET with minimal configuration options.
+
+## Features
+
+- Support for EEEx  
+- Open the EET readme file  
+- Open the EET forum  
+- Open the EET website  
+- Open the appropriate `baldur.lua` for EET  
+- Ability to switch between EET GUIs  
+
+## Technology Stack
+
+- **c#**  
+- **Windows Presentation Foundation**  
+
+## Key Remarks
+
+- **WPF implementation:**  
+  With RoutedUICommand.
